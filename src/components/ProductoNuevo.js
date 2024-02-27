@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { URL_API_PRODUCTO } from "../config/rutas";
+import { URL_API_PRODUCTO, URL_RENDER } from "../config/rutas";
 import { useNavigate } from "react-router-dom";
 
 export function ProductoNuevo(){
@@ -22,7 +22,7 @@ export function ProductoNuevo(){
         formData.append("cantidad", cantidad);
         formData.append("foto", foto);
         
-        const res = await axios.post(URL_API_PRODUCTO +"nuevoProducto", formData,{
+        const res = await axios.post(URL_RENDER +"nuevoProducto", formData,{
             headers:{
                 "Content-Type":"multipart/form-data"
             }

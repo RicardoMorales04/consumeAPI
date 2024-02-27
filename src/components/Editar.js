@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { URL_API, URL_IMAGES } from "../config/rutas";
+import { URL_API, URL_IMAGES, URL_RENDER, URL_RENDER_IMAGES } from "../config/rutas";
 
 export function EditarUsuario(){
     const params = useParams();
@@ -20,14 +20,15 @@ export function EditarUsuario(){
 
     useEffect(() => {
         async function buscarPorID() {
-                const res = await axios.get(URL_API+"buscarUsuarioPorId/" + params.id);
+                const res = await axios.get(URL_RENDER+"buscarUsuarioPorId/" + params.id);
                 setId(res.data.id);
                 setNombre(res.data.nombre);
                 setUsuario(res.data.usuario);
                 setPasswordViejo(res.data.password);
                 setSaltViejo(res.data.salt);
                 setFotoVieja(res.data.foto);
-                setNombreFoto(URL_IMAGES +"/"+ res.data.foto);
+                setNombreFoto(URL_RENDER_IMAGES +"/"+ res.data.foto);
+                //setNombreFoto(URL_IMAGES +"/"+ res.data.foto);
         }
         buscarPorID();
     }, [params.id]);
@@ -43,7 +44,7 @@ export function EditarUsuario(){
             formData.append("saltViejo", saltViejo);
             formData.append("fotoVieja", fotoVieja);
             formData.append("foto", foto);
-            const res = await axios.post(URL_API+"editarUsuario", formData, {
+            const res = await axios.post(URL_RENDER+"editarUsuario", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }

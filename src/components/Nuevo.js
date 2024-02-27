@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { URL_API } from "../config/rutas";
+import { URL_API, URL_RENDER } from "../config/rutas";
 import { useNavigate } from "react-router-dom";
 
 export function Nuevo() {
@@ -22,7 +22,7 @@ export function Nuevo() {
         formData.append("password", password);
         formData.append("foto", foto);
         
-        const res = await axios.post(URL_API +"nuevousuario", formData,{
+        const res = await axios.post(URL_RENDER +"nuevousuario", formData,{
             headers:{
                 "Content-Type":"multipart/form-data"
             }

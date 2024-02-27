@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { URL_RENDER, URL_RENDER_IMAGES } from "../config/rutas";
 
 
 export function Producto(){
     const [dataProductos, setDataProductos]=useState([]);
     useEffect(()=>{
-        //axios.get("https://firebase-lgb1.onrender.com/api/mostrarProductos")
-        axios.get("http://localhost:3000/api/mostrarProductos")
+        axios.get(URL_RENDER+"mostrarProductos")
+        //axios.get("http://localhost:3000/api/mostrarProductos")
         .then((response)=>{
             console.log(response);
             setDataProductos(response.data);
@@ -19,8 +20,8 @@ export function Producto(){
     const listaProductos=dataProductos.map((producto, id)=>{
         var editar="/editarP/"+producto.id;
         var borrar="/borrarP/"+producto.id;
-        //var foto = "https://firebase-lgb1.onrender.com/images/"+producto.foto;
-        var foto = "http://localhost:3000/images/"+producto.foto;
+        var foto = URL_RENDER_IMAGES+producto.foto;
+        //var foto = "http://localhost:3000/images/"+producto.foto;
         return(
             <tr key={id} className="align-middle" > 
                 <td>{producto.id}</td>
