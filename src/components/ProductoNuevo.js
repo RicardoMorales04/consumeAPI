@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-import { URL_API_PRODUCTO, URL_RENDER } from "../config/rutas";
+import { URL_RENDER } from "../config/rutas";
+//import { URL_API_PRODUCTO } from "../config/rutas";
 import { useNavigate } from "react-router-dom";
 
 export function ProductoNuevo(){

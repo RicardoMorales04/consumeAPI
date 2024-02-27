@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { URL_API_PRODUCTO, URL_IMAGES, URL_RENDER, URL_RENDER_IMAGES } from "../config/rutas";
+import { URL_RENDER, URL_RENDER_IMAGES } from "../config/rutas";
+//import { URL_API_PRODUCTO,URL_IMAGES } from "../config/rutas";
 
 export function EditarProducto() {
     const params = useParams();
@@ -24,7 +25,8 @@ export function EditarProducto() {
                 setNumSerie(res.data.numSerie);
                 setCantidad(res.data.categoria);
                 setFotoVieja(res.data.foto);
-                setNombreFoto(URL_RENDER_IMAGES +"/"+ res.data.foto); 
+                setNombreFoto(URL_RENDER_IMAGES + res.data.foto); 
+                //setNombreFoto(URL_RENDER_IMAGES +"/"+ res.data.foto); 
         }
         buscarPorID();
     }, [params.id]);

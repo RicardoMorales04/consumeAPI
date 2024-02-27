@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom"
-import { URL_API_PRODUCTO, URL_RENDER} from "../config/rutas"
+import { URL_RENDER} from "../config/rutas"
+//import { URL_API_PRODUCTO } from "../config/rutas"
 
 export function BorrarP(){
     const params = useParams();
