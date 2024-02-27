@@ -6,7 +6,8 @@ import axios from "axios";
 export function Producto(){
     const [dataProductos, setDataProductos]=useState([]);
     useEffect(()=>{
-        axios.get("https://firebase-lgb1.onrender.com/api/mostrarProductos")
+        //axios.get("https://firebase-lgb1.onrender.com/api/mostrarProductos")
+        axios.get("http://localhost:3000/api/mostrarProductos")
         .then((response)=>{
             console.log(response);
             setDataProductos(response.data);
@@ -16,9 +17,10 @@ export function Producto(){
         });
     },[]);
     const listaProductos=dataProductos.map((producto, id)=>{
-        var editar="/EditarProducto"+producto.id;
-        var borrar="/BorrarProducto"+producto.id;
-        var foto = "https://firebase-lgb1.onrender.com/images/"+producto.foto;
+        var editar="/editarP/"+producto.id;
+        var borrar="/borrarP/"+producto.id;
+        //var foto = "https://firebase-lgb1.onrender.com/images/"+producto.foto;
+        var foto = "http://localhost:3000/images/"+producto.foto;
         return(
             <tr key={id} className="align-middle" > 
                 <td>{producto.id}</td>
@@ -27,7 +29,7 @@ export function Producto(){
                 <td>{producto.cantidad}</td>
                 <td><img src={foto} width="100px"></img></td>
                 <td>
-                    <Link to={editar}>Editar</Link>
+                    <Link to={editar}>Editar</Link>    /
                     <Link to={borrar}>Borrar</Link>
                 </td>
             </tr>
@@ -40,7 +42,6 @@ export function Producto(){
                     <th>Id</th>
                     <th>Nombre</th>
                     <td>Numero de Serie</td>
-                    <td>Cantidad</td>
                     <td>Cantidad</td>
                     <td>Foto</td>
                 </tr>
